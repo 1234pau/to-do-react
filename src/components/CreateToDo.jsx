@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { nanoid } from "nanoid"; // random id
 import ListToDo from "./ListToDo";
 
 const items = [];
@@ -6,19 +7,15 @@ const CreateToDo = () => {
   const [value, setValue] = useState("");
   const [valueEdit, setValueEdit] = useState("");
   const [toDos, setToDos] = useState(items);
-  let nextId = Math.floor(Math.random() * 1000);
   const focus = useRef(null);
   const focusEdit = useRef(null);
-
-  //  let nextId = 0;
-  //  const items = []; do not do that
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setToDos([
       ...toDos,
       {
-        id: nextId,
+        id: nanoid(),
         text: value,
         isDone: false,
         isEditing: false,
@@ -40,6 +37,7 @@ const CreateToDo = () => {
       return toDo;
     });
     setToDos(it);
+    console.log("line trough (done)");
   };
   const handleEdit = (id) => {
     const it = toDos.map((toDo) => {
@@ -52,10 +50,7 @@ const CreateToDo = () => {
       }
       return toDo;
     });
-
     setToDos(it);
-
-    // focusEdit.current.focus();
   };
   return (
     <>

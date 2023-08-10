@@ -1,4 +1,9 @@
-import { useState, useRef, useEffect } from "react";
+import FormEdit from "./FormEdit";
+import { nanoid } from "nanoid"; // random id
+import { FaTrashCan } from "react-icons/fa6";
+import { FaRegPenToSquare } from "react-icons/fa6";
+import { FaCheck } from "react-icons/fa6";
+
 const ListToDo = ({
   toDos,
   handleDelete,
@@ -9,7 +14,6 @@ const ListToDo = ({
   setToDos,
   focusEdit,
 }) => {
-  let nextId = Math.floor(Math.random() * 1000);
   const handleSubmitEdit = (e, id) => {
     e.preventDefault();
     setToDos((prevIt) =>
@@ -17,7 +21,7 @@ const ListToDo = ({
         item.id === id
           ? {
               ...item,
-              id: nextId,
+              id: nanoid(),
               text: valueEdit,
               isDone: false,
               isEditing: false,
@@ -25,7 +29,6 @@ const ListToDo = ({
           : item,
       ),
     );
-    console.log(toDos);
     setValueEdit("");
   };
 
@@ -33,26 +36,27 @@ const ListToDo = ({
     <>
       {toDos.map((toDo) =>
         toDo.isEditing ? (
-          <form className="" onSubmit={(e) => handleSubmitEdit(e, toDo.id)}>
-            <input
-              type="text"
-              placeholder="Update me..."
-              value={valueEdit}
-              ref={focusEdit}
-              onChange={(e) => {
-                setValueEdit(e.target.value);
-              }}
-            />
-            <button className="">Update</button>
-          </form>
+          <FormEdit
+            handleSubmitEdit={handleSubmitEdit}
+            toDo={toDo}
+            valueEdit={valueEdit}
+            focusEdit={focusEdit}
+            setValueEdit={setValueEdit}
+          />
         ) : (
           <li
+            // onClick={() => handleDone(toDo.id)}
             className={toDo.isDone ? "listItem line" : "listItem"}
             key={toDo.id}>
             {toDo.text}
-            <button onClick={() => handleDelete(toDo.id)}>Delete</button>
-            <button onClick={() => handleDone(toDo.id)}>Done</button>
-            <button onClick={() => handleEdit(toDo.id)}>Edit</button>
+            <div className="containerButtons">
+              <FaTrashCan type="button" onClick={() => handleDelete(toDo.id)} />
+              <FaCheck type="button" onClick={() => handleDone(toDo.id)} />
+              <FaRegPenToSquare
+                type="button"
+                onClick={() => handleEdit(toDo.id)}
+              />
+            </div>
           </li>
         ),
       )}

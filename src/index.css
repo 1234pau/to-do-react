@@ -2,58 +2,133 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  background-color: rgb(188, 197, 206);
+  background-color: rgb(42, 22, 54);
 }
-
+.App{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 5px;
+  background-color: rgb(69, 38, 88);
+  padding: 10px;
+  margin-top: 10px;
+}
 .CreateToDoForm{
   width: 500px;
   height: 100px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  justify-content: space-between;
   margin-top: 20px;
   /* border: 1px solid green; */
 }
 .CreateToDoForm input{
- width: 90%;
+ width: 70%;
  height: 40px;
- margin-bottom: 10px;
  font-size: 20px;
  padding-left: 10px;
+ border-radius: 5px;
+ border: none;
+ outline:none;
+ margin-left: 10px;
+ background-color: rgb(42, 22, 54);
+ color: white;
+}
+.CreateToDoForm input::placeholder{
+ color: rgb(234, 235, 236);
 }
 .CreateToDoForm button{
- width: 200px;
+ width: 100px;
  height: 40px;
  border-radius: 10px;
  font-size: 20px;
  font-weight: bold;
- background-color: rgb(121, 154, 218);
- color: aliceblue;
+ background-color: rgb(149, 66, 182);
+ color: rgb(234, 235, 236);
  border: none;
- padding: 10px;
- margin-top: 10px;
+ /* padding: 10px; */
+ margin-right: 10px;
+ 
 }
+
 .containerList{
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
-  /* width: 500px; */
-  /* border: 1px solid red; */
+  width: 90%;
+  height: auto;
+  padding: 10px;
+  /* border: 1px solid green; */
 }
 .listItem{
   width: 100%;
   list-style-type: none;
-  height: 40px;
-  background-color: azure;
+  height: 35px;
+  background-color: rgb(108, 71, 131);
   font-size: 19px;
   border-radius: 5px;
-  margin-right: 40px;
-  margin-bottom: 10px;
-  /* border: 1px solid blue; */
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+ color:rgb(234, 235, 236);
+ 
 }
+/* ************edit form*************** */
+.EditToDoForm{
+  
+  width: 102%;
+  height: 80px; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -15px;
+  /* border: 1px solid red; */
+}
+.EditToDoForm input{
+ width: 70%;
+ height: 40px;
+ font-size: 20px;
+ padding-left: 10px;
+ border-radius: 5px;
+ border: none;
+ outline:none;
+ background-color: rgb(42, 22, 54);
+ color: white;
+
+}
+.EditToDoForm input::placeholder{
+ color: rgb(234, 235, 236);
+}
+.EditToDoForm button{
+ width: 100px;
+ height: 40px;
+ border-radius: 10px;
+ font-size: 20px;
+ font-weight: bold;
+ background-color: rgb(149, 66, 182);
+ color: rgb(234, 235, 236);
+ border: none;
+ 
+}
+/* ***************************************** */
 .line{
   text-decoration: line-through;
+  background-color: rgba(108, 71, 131, 0.479);
+}
+.containerButtons{
+  width: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 100px;
+  
+}
+.containerButtons svg{
+  cursor:pointer;
+  color: rgb(240, 240, 240);
+  
 }
